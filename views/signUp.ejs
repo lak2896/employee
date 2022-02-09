@@ -1,0 +1,37 @@
+
+<!-- html page to display the sign Up page-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signUp.css">
+
+</head>
+
+<!-- registering as an employee page -->
+<body>
+    <header>
+        <div id="sigupText">
+            <h1 id="signup-heading" >Sign Up</h1>
+        </div>
+    </header>
+    <main>
+        <div id="signup-box">
+        <form action="/SignUp" method="post" id="register">
+          
+            <input id="namebox" type="text" name="name" id="name" placeholder="Enter your Name">
+            <input id="userbox" type="text" name="username" id="username" placeholder="Enter a Username">
+            <input id="passbox" type="password" name="password" id="password" placeholder="Enter a valid Password">
+          
+            <input id="emailBox" type="email" name="email" id="email" placeholder="Enter your Email">
+            <input id="signupBtn" type="submit" value="Sign Up" class="submit">
+            <a id="signin" href="/signin">Already Signed Up?</a>
+        </form>
+    </div>
+    </main>
+</body>
+</html>

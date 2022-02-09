@@ -1,0 +1,170 @@
+
+/*styling file to style the index page*/
+
+*{
+    margin: 0;
+}
+
+body{
+    background-color:lightcoral;
+    color:black;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: all 0.4s ease-in-out;
+}
+
+header{
+    background-color:brown;
+    width: 100%;
+    height: 8vh;
+    display: flex;
+}
+
+header>img{
+    position: relative;
+    top: 25%;
+    left: 5%;
+}
+header{
+    color: white;
+}
+
+header>span{
+    position: relative;
+    top: 30%;
+    left: 6%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+main>h2{
+    display: grid;
+    place-items: center;
+}
+
+#navbar{
+    
+    display: flex;
+    width: 100%;
+    position: relative;
+    align-items: center;
+    
+}
+
+#navbar > a{
+    text-decoration: none;
+    color: white;
+}
+
+
+#home{
+    margin-left: 50px;
+}
+#ratings{
+    margin-left: 20px;
+}
+
+#signup{
+    margin-left: 20px;
+}
+
+#signout{
+    margin-left: 820px;
+}
+
+#ratingsid{
+    width: 150px;
+    margin-left: 165px;
+    margin-top: -20px;
+}
+
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: green;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: green;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: green;
+}
+
+#individual{
+    height: 18vh;
+    width: 45vw;
+    position: relative;
+    left: 29%;
+    border: 2px solid white;
+    
+}
+#individual :hover{
+  
+    background-color:yellow;
+}
+#us{
+    position: relative;
+    top: 12px;
+    left: 20px;
+}
+#env{
+    position: absolute;
+    left: 19px;
+    top: 37px;
+}
+
+#un{
+    position: absolute;
+    left: 19px;
+    top: 57px;
+}
+
+#profile-pic{
+    height:16vh;
+    width: 16vh;
+    margin-top:5px;
+    margin-left: 5px;
+}
+#name{
+    position:absolute;
+    top: 18px;
+    left: 105px;
+}
+#email{
+    position: absolute;
+    top: 56px;
+    left: 105px;
+}
+#username{
+    position: absolute;
+    top: 37px;
+    left: 105px;
+}
+#ratingsid{
+    position: relative;
+    top: 0px;
+    left: 420px;
+}

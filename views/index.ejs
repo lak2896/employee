@@ -1,0 +1,152 @@
+<!-- index page displaying main content content -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+
+<body>
+
+    <header>
+     
+        <div id="navbar">
+            <%if(locals.empl.admin){%>
+                <a id="home" href="/">Home</a>
+                <a  id="ratings" href="/ratings"> View Ratings</a>
+                <a id="signup" href="/signUp">Add Employee</a>
+                <a  id="signout" href="/signout">Sign Out</a>
+              
+                <%} else if(locals.empl) {%>
+                    <a id="home" href="/">Home</a>
+                    <a id="ratings" href="/ratings"> View Ratings</a>
+                    <a id="signout" href="/signout">Sign Out</a>
+                   
+            <%}else{%>
+                <a id="signin" href="/signin">Sign In</a>
+                
+            <%}%>
+        </div>
+    </header>
+    <main>
+        <br>
+        <h2>List Of Admins</h2>
+        <br>
+        <div id="adminslist">
+            <% for(var i=0;i<emp.length;i++){ %>
+                <%if(emp[i].admin){%>
+                    <div id="individual">
+                       
+                      
+                        <img id="profile-pic" src="https://st.depositphotos.com/1052233/2815/v/600/depositphotos_28158459-stock-illustration-male-default-profile-picture.jpg">
+                        <span id="name"><b>Name:- </b><%= emp[i].name%></span>
+                        <span id="email"><b>EmailId:- </b><%= emp[i].email%></span>
+                        <span id="username"><b>UserName:- </b><%= emp[i].username%></span>
+                    
+                       
+
+                        
+                        <%if(!(empl.username == emp[i].username) &&(empl.admin || empl.canvote) && (!((empl.liked).includes(emp[i].id)))){%>
+                            <form action=<%="/?id="+emp[i].id%> method="post">
+                                <div id="ratingsid" class="rate">
+                                    <input type="radio" id=<%="id=1"+emp[i].id%> name="rate" value="5" />
+                                    <label for=<%="id=1"+emp[i].id%> title="text">5 stars</label>
+                                    <input type="radio" id=<%="id=2"+emp[i].id%> name="rate" value="4" />
+                                    <label for=<%="id=2"+emp[i].id%> title="text">4 stars</label>
+                                    <input type="radio" id=<%="id=3"+emp[i].id%> name="rate" value="3" />
+                                    <label for=<%="id=3"+emp[i].id%> title="text">3 stars</label>
+                                    <input type="radio" id=<%="id=4"+emp[i].id%> name="rate" value="2" />
+                                    <label for=<%="id=4"+emp[i].id%> title="text">2 stars</label>
+                                    <input type="radio" id=<%="id=5"+emp[i].id%> name="rate" value="1" />
+                                    <label for=<%="id=5"+emp[i].id%> title="text">1 star</label>
+                                    <button style="width: 20px; height: 20px; position: relative; left: 185px; top: 11px;" type="submit" class="btn btn-success">
+                                        <i style="font-size: larger; position: relative; left: -4.5px; top: -1px;  color: aquamarine;" class="far fa-check-square"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <a href="" style="color: white;"></a>
+                        <%}%>
+                    </div>
+                <%}%>
+            <%}%>
+        </div>
+        <br>
+        <h2>List Of Employees</h2>
+        <br>
+        <div id="adminslist">
+            <% for(var i=0;i<emp.length;i++){ %>
+                <%if(!emp[i].admin){%>
+                    <div id="individual">
+                      
+                        <img id="profile-pic" src="https://st.depositphotos.com/1052233/2815/v/600/depositphotos_28158459-stock-illustration-male-default-profile-picture.jpg">
+                        <span id="name"><b>Name:- </b><%= emp[i].name%></span>
+                        <span id="email"><b>EmailId:- </b><%= emp[i].email%></span>
+                        <span id="username"><b>UserName:- </b><%= emp[i].username%></span>
+                    
+                      
+                        <%if(empl.admin && !(empl.username == emp[i].username)){%>
+                            <%if(!(emp[i].canvote)){%>
+                                <a href=<%="/vote?id="+emp[i].id%>>
+                                    <button  id="vote-btn" type="submit" style="position: absolute; left: 440px; top: 5px; height:25px ; color:white; background-color: blue; border-radius: 10px;" >Participate to Vote</button>
+                                </a>
+                            <%}%>
+                            <a href=<%="/admin?id="+emp[i].id%>> 
+                                  <button  id="addAdmin-btn" type="submit" style="position: absolute; left: 320px; top: 5px; height:25px ; color:white; background-color:orangered; border-radius: 10px;" >Add as Admin</button>
+                                </a>
+                            
+                        <%}%>
+                        
+                        <%if(!(empl.username == emp[i].username) &&(empl.admin || empl.canvote) && (!((empl.liked).includes(emp[i].id)))){%>
+                            <form action=<%="/?id="+emp[i].id%> method="post">
+                                <div id="ratingsid" class="rate">
+                                    <input type="radio" id=<%="id=1"+emp[i].id%> name="rate" value="5" />
+                                    <label for=<%="id=1"+emp[i].id%> title="text">5 stars</label>
+                                    <input type="radio" id=<%="id=2"+emp[i].id%> name="rate" value="4" />
+                                    <label for=<%="id=2"+emp[i].id%> title="text">4 stars</label>
+                                    <input type="radio" id=<%="id=3"+emp[i].id%> name="rate" value="3" />
+                                    <label for=<%="id=3"+emp[i].id%> title="text">3 stars</label>
+                                    <input type="radio" id=<%="id=4"+emp[i].id%> name="rate" value="2" />
+                                    <label for=<%="id=4"+emp[i].id%> title="text">2 stars</label>
+                                    <input type="radio" id=<%="id=5"+emp[i].id%> name="rate" value="1" />
+                                    <label for=<%="id=5"+emp[i].id%> title="text">1 star</label>
+                                    <button style="width: 50px; height: 20px; position: relative; left: 175px; top: -22px;" type="submit" class="btn btn-success">
+                                       Done
+                                    </button>
+                                    
+                                </div>
+                            </form>
+                        <%}%>
+
+
+                        <%if(empl.admin){%>
+                            <a href=<%="/deleteemp?id="+emp[i].id%>><i style="position: absolute; left: 600px; top: 30px; color: red;" class="fas fa-trash" ></i></a>
+                        <%}%>
+                        <%if(!empl.admin && !empl.canvote){%>
+                            <form action="/feedback/<%=emp[i].id%>" method="POST">
+                            <input id="feed" type="text" name="feed" placeholder="Short feedback" style="position: absolute; left: 340px; top: 70px; background-color: white; color:black;" >
+                            <input id="feed-btn" type="submit" value="Submit" style="position: absolute; left: 515px; top: 70px; background-color: blue; color:white; border-radius: 9px;" >
+                        </form>
+                            
+                        <%}%>
+                       
+               
+
+                    </div>
+                <%}%>
+               
+            <%}%>
+        </div>
+    </main>
+
+</body>
+
+</html>

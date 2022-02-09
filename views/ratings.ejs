@@ -1,0 +1,61 @@
+
+<!-- html file to display the rating table-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- head tag -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Ratings</title>
+    <link rel="stylesheet" href="rating.css">
+</head>
+
+<body>
+    <!-- navbar header -->
+    <header>
+        <div id="navbar">
+            <%if(locals.empl){%>
+                <a id="home" href="/">Home</a>
+                <a id="signout" href="/signout">Sign Out</a>
+            <%} else {%>
+                <a href="/signin">Sign In</a>
+                <a href="/register">Register</a>
+            <%}%>
+        </div>
+    </header>
+    <table>
+        <!-- table displaying  -->
+        <tr id="tabletop">
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Admin</th>
+            <th>Rating</th>
+            <th>Feedback</th>
+        </tr>
+        <%for(var i=0;i<emp.length;i++){%>
+            <tr>
+                <td><%=emp[i].name%></td>
+                <td><%=emp[i].username%></td>
+                <td><%=emp[i].email%></td>
+                <td><%if(emp[i].admin){%>
+                    Yes
+                <%} else {%>
+                    No
+                <%}%>
+
+                </td>
+                <td><%=emp[i].rating%></td>
+                <td>
+                    <%=emp[i].feedback%>
+                </td>
+            </tr>
+        <%}%>
+    </table>
+</body>
+
+</html>
